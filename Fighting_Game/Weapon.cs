@@ -9,11 +9,7 @@ namespace Fighting_Game
         Random generator = new Random();
         public void Attack(Fighter target)
         {
-            target.hp -= generator.Next(10, 251);
-            if (target.hp < 0) { target.hp = 0; }
-
-
-
+            target.Hp -= generator.Next(10, 251);
         }
     }
 }

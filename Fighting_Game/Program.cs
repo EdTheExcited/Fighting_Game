@@ -9,7 +9,7 @@ namespace Fighting_Game
             Fighter player = new Fighter();
             Fighter enemy = new Fighter();
             bool ongoing = true;
-            System.Console.WriteLine("WELCOME TO FIGHTCOCKER 2.0!\n What is the name of your Player?");
+            System.Console.WriteLine("WELCOME TO FIGHTFIGHT 2.0!\n What is the name of your Player?");
 
             while (player.name == "")
             {
@@ -24,9 +24,6 @@ namespace Fighting_Game
 
 
             }
-
-
-
 
             if (weaponAnswer.ToLower() == "stick")
             {
@@ -52,6 +49,14 @@ namespace Fighting_Game
             {
                 System.Console.WriteLine("fuck off, pick a weapon");
             }
+            System.Console.WriteLine("What Is The Name Of Your Everlasting Enemy?");
+            enemy.name = "";
+            while (enemy.name == "")
+            {
+                enemy.name = Console.ReadLine().ToLower().Trim();
+
+
+            }
             System.Console.WriteLine($"Command {player.name} to attack with his {player.weapon.name} \n Press Space to Whack Him!");
 
             while (player.CheckAlive() && enemy.CheckAlive())
@@ -60,9 +65,9 @@ namespace Fighting_Game
                 if (key == ConsoleKey.Spacebar)
                 {
                     player.weapon.Attack(enemy);
-                    if (enemy.hp > 0)
+                    if (enemy.Hp > 0)
                     {
-                        System.Console.WriteLine($"Ouch, why you hurt him? He only has {enemy.hp} left :(");
+                        System.Console.WriteLine($"Ouch, why you hurt him? He only has {enemy.Hp} left :(");
 
                     }
                     else
@@ -70,13 +75,21 @@ namespace Fighting_Game
                         System.Console.WriteLine("lol that mf dead");
                     }
                     enemy.weapon.Attack(player);
-                    System.Console.WriteLine($"{enemy.name}smacked u, {player.hp} hp left!");
+                    System.Console.WriteLine($"{enemy.name} smacked u, {player.Hp} hp left!");
 
                 }
 
 
             }
-            System.Console.WriteLine($"The Battle Is Over,  Came Out Victorious!");
+
+            if (enemy.Hp == 0)
+            {
+                System.Console.WriteLine($"The Battle Is Over, {player.name} Came Out Victorious!");
+            }
+            else if (player.Hp == 0)
+            {
+                System.Console.WriteLine($"It Is Done... {player.name} was killed ruthlessly by {enemy.name}");
+            }
             Console.ReadLine();
 
         }
