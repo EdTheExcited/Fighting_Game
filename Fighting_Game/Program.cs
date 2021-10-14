@@ -9,6 +9,19 @@ namespace Fighting_Game
             Fighter player = new Fighter();
             Fighter enemy = new Fighter();
             bool ongoing = true;
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            System.Console.WriteLine(@" 
+_______ _________ _______          _________ _______ _________ _______          _________   _______     _______ 
+(  ____ \\__   __/(  ____ \|\     /|\__   __/(  ____ \\__   __/(  ____ \|\     /|\__   __/  / ___   )   (  __   )
+| (    \/   ) (   | (    \/| )   ( |   ) (   | (    \/   ) (   | (    \/| )   ( |   ) (     \/   )  |   | (  )  |
+| (__       | |   | |      | (___) |   | |   | (__       | |   | |      | (___) |   | |         /   )   | | /   |
+|  __)      | |   | | ____ |  ___  |   | |   |  __)      | |   | | ____ |  ___  |   | |       _/   /    | (/ /) |
+| (         | |   | | \_  )| (   ) |   | |   | (         | |   | | \_  )| (   ) |   | |      /   _/     |   / | |
+| )      ___) (___| (___) || )   ( |   | |   | )      ___) (___| (___) || )   ( |   | |     (   (__/\ _ |  (__) |
+|/       \_______/(_______)|/     \|   )_(   |/       \_______/(_______)|/     \|   )_(     \_______/(_)(_______)
+                                                                                                                 ");
+            Console.ForegroundColor = ConsoleColor.White;
             System.Console.WriteLine("WELCOME TO FIGHTFIGHT 2.0!\n What is the name of your Player?");
 
             while (player.name == "")
