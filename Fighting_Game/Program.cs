@@ -6,56 +6,77 @@ namespace Fighting_Game
     {
         static void Main(string[] args)
         {
-            Fighter Player = new Fighter();
-            Fighter Enemy = new Fighter();
+            Fighter player = new Fighter();
+            Fighter enemy = new Fighter();
             bool ongoing = true;
             System.Console.WriteLine("WELCOME TO FIGHTCOCKER 2.0!\n What is the name of your Player?");
-            Player.name = Console.ReadLine();
-            System.Console.WriteLine($"What weapon does {Player.name} carry? \n Stick, Rainbow Dildo, Sledgehammer, Dagger");
-            string weaponanswer = Console.ReadLine();
 
-
-
-
-            if (weaponanswer.ToLower() == "stick")
+            while (player.name == "")
             {
-
-                Player.weapon = new Weapon() { name = "Stick", damage = 40 };
+                player.name = Console.ReadLine();
+                player.name = player.name.Trim();
             }
-            else if (weaponanswer.ToLower() == "rainbow dildo")
+            System.Console.WriteLine($"What weapon does {player.name} carry? \n Stick, Rainbow Dildo, Sledgehammer, Dagger");
+            string weaponAnswer = "";
+            while (weaponAnswer != "stick" && weaponAnswer != "rainbow dildo" && weaponAnswer != "sledgehammer" && weaponAnswer != "dagger")
             {
-                Player.weapon = new Weapon() { name = "Rainbow Dildo", damage = 55 };
+                weaponAnswer = Console.ReadLine().ToLower().Trim();
+
 
             }
-            else if (weaponanswer.ToLower() == "sledgehammer")
+
+
+
+
+            if (weaponAnswer.ToLower() == "stick")
             {
-                Player.weapon = new Weapon() { name = "Sledgehammer", damage = 90 };
+
+                player.weapon = new Weapon() { name = "Stick", damage = 40 };
+            }
+            else if (weaponAnswer.ToLower() == "rainbow dildo")
+            {
+                player.weapon = new Weapon() { name = "Rainbow Dildo", damage = 55 };
 
             }
-            else if (weaponanswer.ToLower() == "dagger")
+            else if (weaponAnswer.ToLower() == "sledgehammer")
             {
-                Player.weapon = new Weapon() { name = "Dagger", damage = 60 };
+                player.weapon = new Weapon() { name = "Sledgehammer", damage = 90 };
+
+            }
+            else if (weaponAnswer.ToLower() == "dagger")
+            {
+                player.weapon = new Weapon() { name = "Dagger", damage = 60 };
 
             }
             else
             {
                 System.Console.WriteLine("fuck off, pick a weapon");
             }
-            System.Console.WriteLine($"Command {Player.name} to attack with his {Player.weapon.name} \n Press Space to Whack Him!");
+            System.Console.WriteLine($"Command {player.name} to attack with his {player.weapon.name} \n Press Space to Whack Him!");
 
-            while (Player.CheckAlive() && Enemy.CheckAlive())
+            while (player.CheckAlive() && enemy.CheckAlive())
             {
                 ConsoleKey key = Console.ReadKey().Key;
                 if (key == ConsoleKey.Spacebar)
                 {
-                    Player.weapon.Attack(Enemy);
-                    System.Console.WriteLine($"Ouch, why you hurt him? He only has {Enemy.hp} left :(");
+                    player.weapon.Attack(enemy);
+                    if (enemy.hp > 0)
+                    {
+                        System.Console.WriteLine($"Ouch, why you hurt him? He only has {enemy.hp} left :(");
+
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("lol that mf dead");
+                    }
+                    enemy.weapon.Attack(player);
+                    System.Console.WriteLine($"{enemy.name}smacked u, {player.hp} hp left!");
 
                 }
 
 
             }
-            System.Console.WriteLine($"The Battle Is Over, {Player.name} Came Out Victorious!");
+            System.Console.WriteLine($"The Battle Is Over,  Came Out Victorious!");
             Console.ReadLine();
 
         }

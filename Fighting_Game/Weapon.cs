@@ -10,7 +10,8 @@ namespace Fighting_Game
         public void Attack(Fighter target)
         {
             target.hp -= generator.Next(10, 251);
-            System.Console.WriteLine($" Ouch {target.hp}");
+            if (target.hp < 0) { target.hp = 0; }
+
 
 
         }

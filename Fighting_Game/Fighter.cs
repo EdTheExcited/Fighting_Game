@@ -5,7 +5,7 @@ namespace Fighting_Game
     public class Fighter
     {
         public int hp = 1000;
-        public string name;
+        public string name = "";
 
         public Weapon weapon = new Weapon();
 
