@@ -10,7 +10,6 @@ namespace Fighting_Game
         public void Attack(Fighter target)
         {
             target.Hp -= generator.Next(10, 251);
-            target.Hp -= generator.Next(10, 251);
         }
     }
 }
